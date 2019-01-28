@@ -1,0 +1,47 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Infrastructure\**" />
+    <Compile Remove="Models\ViewModel\**" />
+    <Compile Remove="Repository\**" />
+    <Compile Remove="Views\Home\**" />
+    <Content Remove="Infrastructure\**" />
+    <Content Remove="Models\ViewModel\**" />
+    <Content Remove="Repository\**" />
+    <Content Remove="Views\Home\**" />
+    <EmbeddedResource Remove="Infrastructure\**" />
+    <EmbeddedResource Remove="Models\ViewModel\**" />
+    <EmbeddedResource Remove="Repository\**" />
+    <EmbeddedResource Remove="Views\Home\**" />
+    <None Remove="Infrastructure\**" />
+    <None Remove="Models\ViewModel\**" />
+    <None Remove="Repository\**" />
+    <None Remove="Views\Home\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Models\SessionCart.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Resources\Models\Order.en.resx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Resources\Models\ViewModels\Order.en.resx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.6" />
+    <PackageReference Include="Microsoft.Extensions.Localization" Version="2.1.1" />
+  </ItemGroup>
+
+</Project>

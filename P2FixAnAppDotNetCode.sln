@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2037
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P2FixAnAppDotNetCode.Tests", "P2FixAnAppDotNetCode.Tests\P2FixAnAppDotNetCode.Tests.csproj", "{CA44F3AE-DCEF-4A17-94D8-2C8FCF7DBA2B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P2FixAnAppDotNetCode", "P2FixAnAppDotNetCode\P2FixAnAppDotNetCode.csproj", "{CC3BD462-2245-4D45-B72E-465D50FA608C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CA44F3AE-DCEF-4A17-94D8-2C8FCF7DBA2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA44F3AE-DCEF-4A17-94D8-2C8FCF7DBA2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA44F3AE-DCEF-4A17-94D8-2C8FCF7DBA2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA44F3AE-DCEF-4A17-94D8-2C8FCF7DBA2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC3BD462-2245-4D45-B72E-465D50FA608C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC3BD462-2245-4D45-B72E-465D50FA608C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC3BD462-2245-4D45-B72E-465D50FA608C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC3BD462-2245-4D45-B72E-465D50FA608C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {43A10EB0-E03F-416A-9603-50EED8B9D467}
+	EndGlobalSection
+EndGlobal
