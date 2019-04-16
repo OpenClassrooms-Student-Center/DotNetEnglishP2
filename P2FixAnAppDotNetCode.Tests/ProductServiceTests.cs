@@ -36,15 +36,30 @@ namespace P2FixAnAppDotNetCode.Tests
             IProductService productService = new ProductService(productRepository, orderRepository);
 
             IEnumerable<Product> products = productService.GetAllProducts();
-            cart.AddItem(products.First(p => p.Id == 1), 1);
-            cart.AddItem(products.First(p => p.Id == 3), 2);
-            cart.AddItem(products.First(p => p.Id == 5), 3);
+            cart.AddItem(products.Where(p => p.Id == 1).First(), 1);
+            cart.AddItem(products.Where(p => p.Id == 3).First(), 2);
+            cart.AddItem(products.Where(p => p.Id == 5).First(), 3);
 
             productService.UpdateProductQuantities(cart);
 
-            Assert.Equal(19, products.First(p => p.Id == 1).Stock);
-            Assert.Equal(28, products.First(p => p.Id == 3).Stock);
-            Assert.Equal(37, products.First(p => p.Id == 5).Stock);
+            Assert.Equal(9, products.Where(p => p.Id == 1).First().Stock);
+            Assert.Equal(28, products.Where(p => p.Id == 3).First().Stock);
+            Assert.Equal(47, products.Where(p => p.Id == 5).First().Stock);
+
+            //do a second run adding items to cart. Resetting the repo and service and cart
+            //will simulate the process from the front end perspective
+            //here testing that product stock values are decreasing for each cart checkout, not just a single time
+            cart = new Cart();
+            productRepository = new ProductRepository();
+            productService = new ProductService(productRepository, orderRepository);
+            products = productService.GetAllProducts();
+            cart.AddItem(products.Where(p => p.Id == 1).First(), 1);
+            cart.AddItem(products.Where(p => p.Id == 3).First(), 2);
+            cart.AddItem(products.Where(p => p.Id == 5).First(), 3);
+            productService.UpdateProductQuantities(cart);
+            Assert.Equal(8, products.Where(p => p.Id == 1).First().Stock);
+            Assert.Equal(26, products.Where(p => p.Id == 3).First().Stock);
+            Assert.Equal(44, products.Where(p => p.Id == 5).First().Stock);
         }
 
         [Fact]
