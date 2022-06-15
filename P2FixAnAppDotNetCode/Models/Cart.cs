@@ -45,7 +45,6 @@ namespace P2FixAnAppDotNetCode.Models
                         cartLines.Insert(i, quantityToAdd);
                     }
                 }
-                //cartLines.Find(item => item.Product.Id == product.Id).Quantity = quantity;
             }
             else
             {
