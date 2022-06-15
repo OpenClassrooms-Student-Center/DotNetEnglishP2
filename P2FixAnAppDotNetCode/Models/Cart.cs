@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace P2FixAnAppDotNetCode.Models
@@ -9,7 +10,7 @@ namespace P2FixAnAppDotNetCode.Models
     public class Cart : ICart
     {
         /// <summary>
-        /// Read-only property for dispaly only
+        /// Read-only property for display only
         /// </summary>
         public IEnumerable<CartLine> Lines => GetCartLineList();
 
@@ -28,6 +29,17 @@ namespace P2FixAnAppDotNetCode.Models
         public void AddItem(Product product, int quantity)
         {
             // TODO implement the method
+            var cartlines = GetCartLineList();
+            var OrderLineId = 0;
+            
+            while (quantity != 0 && product != null)
+            {
+                quantity--;
+                OrderLineId++;
+
+                var productToAdd = new CartLine() { OrderLineId = OrderLineId, Product = product, Quantity = quantity };
+                cartlines.Add(productToAdd);
+            }
         }
 
         /// <summary>
