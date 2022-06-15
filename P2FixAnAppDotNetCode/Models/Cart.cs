@@ -9,6 +9,7 @@ namespace P2FixAnAppDotNetCode.Models
     /// </summary>
     public class Cart : ICart
     {
+        private List<CartLine> _myCartList = new List<CartLine>();
         /// <summary>
         /// Read-only property for display only
         /// </summary>
@@ -20,7 +21,8 @@ namespace P2FixAnAppDotNetCode.Models
         /// <returns></returns>
         private List<CartLine> GetCartLineList()
         {
-            return new List<CartLine>();
+            //return new List<CartLine>();
+            return _myCartList;
         }
 
         /// <summary>
@@ -29,17 +31,35 @@ namespace P2FixAnAppDotNetCode.Models
         public void AddItem(Product product, int quantity)
         {
             // TODO implement the method
-            var cartlines = GetCartLineList();
+            var cartLines = _myCartList;
             var OrderLineId = 0;
-            
-            while (quantity != 0 && product != null)
-            {
-                quantity--;
-                OrderLineId++;
 
-                var productToAdd = new CartLine() { OrderLineId = OrderLineId, Product = product, Quantity = quantity };
-                cartlines.Add(productToAdd);
+            if (cartLines.Exists(item => item.Product.Id == product.Id))
+            {
+                for (var i = 0; i < cartLines.Count; i++)
+                {
+                    if (cartLines[i].Product.Id == product.Id)
+                    {
+                        var quantityToAdd = new CartLine() { OrderLineId = OrderLineId, Product = product, Quantity = quantity + cartLines[i].Quantity };
+                        cartLines.Remove(cartLines[i]);
+                        cartLines.Insert(i, quantityToAdd);
+                    }
+                }
+                //cartLines.Find(item => item.Product.Id == product.Id).Quantity = quantity;
             }
+            else
+            {
+                while (quantity != 0 && product != null)
+                {
+                    OrderLineId++;
+                    var productToAdd = new CartLine() { OrderLineId = OrderLineId, Product = product, Quantity = quantity };
+
+                    cartLines.Add(productToAdd);
+                    quantity--;
+                }
+
+            }
+            _myCartList = cartLines;
         }
 
         /// <summary>
