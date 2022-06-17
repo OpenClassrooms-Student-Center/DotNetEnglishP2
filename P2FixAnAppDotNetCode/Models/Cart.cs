@@ -73,7 +73,22 @@ namespace P2FixAnAppDotNetCode.Models
         public double GetTotalValue()
         {
             // TODO implement the method
-            return 0.0;
+            List<double> getTotalValueList = new List<double>();
+            var cartListCount = _myCartList;
+            var totalValue = 0.0;
+
+            foreach (var thisCartLine in cartListCount)
+            {
+                double cartLinePrice = thisCartLine.Product.Price;
+                double cartLineQtty = thisCartLine.Quantity;
+                double cartLineTotal = cartLineQtty * cartLinePrice;
+
+                getTotalValueList.Add(cartLineTotal);
+            }
+
+            totalValue = getTotalValueList.Sum();
+
+            return totalValue;
         }
 
         /// <summary>
@@ -83,6 +98,7 @@ namespace P2FixAnAppDotNetCode.Models
         {
             // TODO implement the method
             return 0.0;
+
         }
 
         /// <summary>
