@@ -48,7 +48,7 @@ namespace P2FixAnAppDotNetCode.Models
             }
             else
             {
-                while (quantity != 0 && product != null)
+                if (quantity != 0 && product != null)
                 {
                     OrderLineId++;
                     var productToAdd = new CartLine() { OrderLineId = OrderLineId, Product = product, Quantity = quantity };
