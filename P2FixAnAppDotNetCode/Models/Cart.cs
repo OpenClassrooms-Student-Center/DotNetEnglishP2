@@ -32,7 +32,7 @@ namespace P2FixAnAppDotNetCode.Models
         {
             // TODO implement the method
             var cartLines = _myCartList;
-            var OrderLineId = 0;
+            var orderLineId = 0;
 
             if (cartLines.Exists(item => item.Product.Id == product.Id))
             {
@@ -40,7 +40,7 @@ namespace P2FixAnAppDotNetCode.Models
                 {
                     if (cartLines[i].Product.Id == product.Id)
                     {
-                        var quantityToAdd = new CartLine() { OrderLineId = OrderLineId, Product = product, Quantity = quantity + cartLines[i].Quantity };
+                        var quantityToAdd = new CartLine() { OrderLineId = orderLineId, Product = product, Quantity = quantity + cartLines[i].Quantity };
                         cartLines.Remove(cartLines[i]);
                         cartLines.Insert(i, quantityToAdd);
                     }
@@ -48,13 +48,12 @@ namespace P2FixAnAppDotNetCode.Models
             }
             else
             {
-                while (quantity != 0 && product != null)
+                if (quantity != 0 && product != null)
                 {
-                    OrderLineId++;
-                    var productToAdd = new CartLine() { OrderLineId = OrderLineId, Product = product, Quantity = quantity };
+                    orderLineId++;
+                    var productToAdd = new CartLine() { OrderLineId = orderLineId, Product = product, Quantity = quantity };
 
                     cartLines.Add(productToAdd);
-                    quantity--;
                 }
 
             }
@@ -73,7 +72,22 @@ namespace P2FixAnAppDotNetCode.Models
         public double GetTotalValue()
         {
             // TODO implement the method
-            return 0.0;
+            List<double> getTotalValueList = new List<double>();
+            var cartListCount = _myCartList;
+            var totalValue = 0.0;
+
+            foreach (var thisCartLine in cartListCount)
+            {
+                double cartLinePrice = thisCartLine.Product.Price;
+                double cartLineQtty = thisCartLine.Quantity;
+                double cartLineTotal = cartLineQtty * cartLinePrice;
+
+                getTotalValueList.Add(cartLineTotal);
+            }
+
+            totalValue = getTotalValueList.Sum();
+
+            return totalValue;
         }
 
         /// <summary>
@@ -83,6 +97,7 @@ namespace P2FixAnAppDotNetCode.Models
         {
             // TODO implement the method
             return 0.0;
+
         }
 
         /// <summary>

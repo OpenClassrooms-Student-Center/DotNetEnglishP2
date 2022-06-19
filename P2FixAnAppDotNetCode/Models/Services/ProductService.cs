@@ -1,4 +1,7 @@
-﻿using P2FixAnAppDotNetCode.Models.Repositories;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using P2FixAnAppDotNetCode.Models.Repositories;
 
 namespace P2FixAnAppDotNetCode.Models.Services
 {
@@ -23,6 +26,13 @@ namespace P2FixAnAppDotNetCode.Models.Services
         {
             // TODO change the return type from array to List<T> and propagate the change
             // thoughout the application
+            // List<Product> repositoryArrToList = new List<Product>(_productRepository.GetAllProducts());
+            // var prod = new List<Product[]>();
+            //
+            // return repositoryArrToList.ToArray();
+
+            // List<Product> arrayToList = new List<Product>(_productRepository.GetAllProducts());
+            // return arrayToList.ToArray();
             return _productRepository.GetAllProducts();
         }
 
