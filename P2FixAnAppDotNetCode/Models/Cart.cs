@@ -32,7 +32,7 @@ namespace P2FixAnAppDotNetCode.Models
         {
             // TODO implement the method
             var cartLines = _myCartList;
-            var OrderLineId = 0;
+            var orderLineId = 0;
 
             if (cartLines.Exists(item => item.Product.Id == product.Id))
             {
@@ -40,7 +40,7 @@ namespace P2FixAnAppDotNetCode.Models
                 {
                     if (cartLines[i].Product.Id == product.Id)
                     {
-                        var quantityToAdd = new CartLine() { OrderLineId = OrderLineId, Product = product, Quantity = quantity + cartLines[i].Quantity };
+                        var quantityToAdd = new CartLine() { OrderLineId = orderLineId, Product = product, Quantity = quantity + cartLines[i].Quantity };
                         cartLines.Remove(cartLines[i]);
                         cartLines.Insert(i, quantityToAdd);
                     }
@@ -50,11 +50,10 @@ namespace P2FixAnAppDotNetCode.Models
             {
                 if (quantity != 0 && product != null)
                 {
-                    OrderLineId++;
-                    var productToAdd = new CartLine() { OrderLineId = OrderLineId, Product = product, Quantity = quantity };
+                    orderLineId++;
+                    var productToAdd = new CartLine() { OrderLineId = orderLineId, Product = product, Quantity = quantity };
 
                     cartLines.Add(productToAdd);
-                    quantity--;
                 }
 
             }
